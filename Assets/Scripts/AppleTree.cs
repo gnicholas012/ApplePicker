@@ -7,17 +7,19 @@ public class AppleTree : MonoBehaviour
 
     [Header("Set in Inspector")]
 
-    public GameObject applePrefab;
+    public GameObject redApplePrefab;
+    public GameObject goldApplePrefab;
     public float speed = 1f;
     public float leftAndRight = 10f;
     public float chanceToChangeDirections = 0.1f;
     public float secondsBetweenDrops = 1f;
-    public int randomDelay = 0;
+    private int randomDelay = 0;
+    private int appleCounter = 0;
 
 	// Use this for initialization
 	void Start()
     {
-		
+        Invoke("DropApple", 2f);
 	}
 	
 	// Update is called once per frame
@@ -30,12 +32,14 @@ public class AppleTree : MonoBehaviour
         if(pos.x < -leftAndRight)
         {
             speed = Mathf.Abs(speed);
+            randomDelay = 10;
         }
         else
         {
             if(pos.x > leftAndRight)
             {
                 speed = -Mathf.Abs(speed);
+                randomDelay = 10;
             }
         }
 	}
@@ -50,5 +54,34 @@ public class AppleTree : MonoBehaviour
                 randomDelay = 10;
             }
         }
+    }
+    void DropApple()
+    {
+        if (appleCounter < 9)
+        {
+            GameObject redApple = Instantiate<GameObject>(redApplePrefab);
+            redApple.transform.position = transform.position;
+            appleCounter++;
+        }
+        else
+        {
+            GameObject goldApple = Instantiate<GameObject>(goldApplePrefab);
+            goldApple.transform.position = transform.position;
+
+            if (Mathf.Abs(speed) < 20)
+            {
+                //when speed reaches 20, only golden apples spawn
+                appleCounter = 0;
+                if (speed >= 0)
+                {
+                    speed++;
+                }
+                else
+                {
+                    speed--;
+                }
+            }
+        }
+        Invoke("DropApple", secondsBetweenDrops);
     }
 }
