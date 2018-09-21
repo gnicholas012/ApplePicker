@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 23915021723733306}
   - component: {fileID: 135685681916653322}
   - component: {fileID: 54916260610358154}
-  m_Layer: 0
+  - component: {fileID: 114017852604258624}
+  m_Layer: 10
   m_Name: GoldApple
-  m_TagString: Apple
+  m_TagString: GoldApple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +101,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114017852604258624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285191925907556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daeebb0665d88e04fbb0cf44d52b95f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135685681916653322
 SphereCollider:
   m_ObjectHideFlags: 1
