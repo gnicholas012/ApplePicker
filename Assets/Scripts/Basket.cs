@@ -7,7 +7,7 @@ public class Basket : MonoBehaviour
 {
     [Header("Set Dynamically")]
     public Text scoreGT;
-    private int score = 0;
+    private static int score = 0;
 	// Use this for initialization
 	void Start()
     {
@@ -44,6 +44,10 @@ public class Basket : MonoBehaviour
             scoreGT.text = "Score: " + score.ToString();
 
             Destroy(collidedWith);
+        }
+        if(score > HighScore.hiScore)
+        {
+            HighScore.hiScore = score;
         }
     }
 }

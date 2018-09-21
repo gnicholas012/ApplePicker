@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApplePicker : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class ApplePicker : MonoBehaviour
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         basketList = new List<GameObject>();
 		for(int i = 0; i < numBaskets; i++)
@@ -42,5 +43,10 @@ public class ApplePicker : MonoBehaviour
         GameObject tBasketGo = basketList[basketIndex];
         basketList.RemoveAt(basketIndex);
         Destroy(tBasketGo);
+
+        if(basketList.Count <= 0)
+        {
+            SceneManager.LoadScene("Scene_0");
+        }
     }
 }
